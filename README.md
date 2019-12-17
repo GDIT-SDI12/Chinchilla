@@ -14,3 +14,8 @@ To compile, run, and use this application you need:
 1. create a database
 1. import tables from [our dump file](db/tables.sql)
 1. set up URL, USER and PASSWORD properties into [hibernate configuration file](src/main/resources/hibernate.cfg.xml)
+   > in order to check database connection:
+   > - execute Maven command `mvn clean test` from project's root directory
+   > 
+   > **or**
+   > - run [DatabaseTest](src/test/java/nz/students/forsdi/chinchilla/DatabaseTest.java)
