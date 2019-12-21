@@ -3,7 +3,7 @@ package nz.students.forsdi.chinchilla.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user", schema = "public")
+@Table(name = "users", schema = "public")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,8 +14,7 @@ public class User {
             CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,
-            CascadeType.REFRESH},
-            fetch = FetchType.EAGER)
+            CascadeType.REFRESH})
     @JoinColumn(name = "role_id")
     private Role role;
 
@@ -30,6 +29,10 @@ public class User {
     private boolean active;
 
     public User() {
+    }
+
+    public User(String login) {
+        this.login = login;
     }
 
     public int getId() {
