@@ -20,7 +20,11 @@ public class PostRestController {
 
     @GetMapping("/{postId}")
     public Post getPost(@PathVariable int postId) {
-        return postService.getPost(postId);
+        Post thePost = postService.getPost(postId);
+        if (thePost == null) {
+            throw new EntityNotFoundException("Post id not found - " + postId);
+        }
+        return thePost;
     }
 
     @PostMapping("")
@@ -39,6 +43,10 @@ public class PostRestController {
 
     @DeleteMapping("/{postId}")
     public String deletePost(@PathVariable int postId) {
+        Post thePost = postService.getPost(postId);
+        if (thePost == null) {
+            throw new EntityNotFoundException("Post id not found - " + postId);
+        }
         postService.deletePost(postId);
         return "Deleted post id - " + postId;
     }

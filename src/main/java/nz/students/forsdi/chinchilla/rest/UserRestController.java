@@ -19,8 +19,12 @@ public class UserRestController {
     }
 
     @GetMapping("/{userId}")
-    public  User getUser(@PathVariable int userId) {
-        return userService.getUser(userId);
+    public User getUser(@PathVariable int userId) {
+        User theUser = userService.getUser(userId);
+        if (theUser == null) {
+            throw new EntityNotFoundException("User id not found:" + userId);
+        }
+        return theUser;
     }
 
     @PostMapping("")
@@ -39,6 +43,10 @@ public class UserRestController {
 
     @DeleteMapping("/{userId}")
     public String deleteUser(@PathVariable int userId) {
+        User theUser = userService.getUser(userId);
+        if (theUser == null) {
+            throw new EntityNotFoundException("User id not found:" + userId);
+        }
         userService.deleteUser(userId);
         return "Deleted user id - " + userId;
     }

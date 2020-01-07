@@ -17,7 +17,6 @@
         <spring.version>5.2.2.RELEASE</spring.version>
         <servlet.version>4.0.1</servlet.version>
         <jsp.version>2.3.3</jsp.version>
-        <junit.jupiter.version>5.5.2</junit.jupiter.version>
         <hibernate.version>5.4.10.Final</hibernate.version>
         <hikari.version>3.4.1</hikari.version>
         <postgresql.connector.version>42.2.9</postgresql.connector.version>
@@ -54,25 +53,6 @@
             <artifactId>javax.servlet.jsp-api</artifactId>
             <version>${jsp.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <!-- JUnit -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
         </dependency>
         <!-- Postgresql connector-->
         <dependency>
