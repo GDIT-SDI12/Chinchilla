@@ -11,13 +11,8 @@ public class ExceptionHandlerController {
     @ExceptionHandler
     public ResponseEntity<ErrorResponse> handleException(EntityNotFoundException exc) {
         HttpStatus status = HttpStatus.NOT_FOUND;
-
         // 2) create ErrorResponse
-        ErrorResponse error = new ErrorResponse(
-                status.value(),
-                exc.getMessage(),
-                System.currentTimeMillis());
-
+        ErrorResponse error = createErrorResponse(status, exc);
         // 3) return ResponseEntity
         return new ResponseEntity<>(error, status);
     }
@@ -26,10 +21,15 @@ public class ExceptionHandlerController {
     @ExceptionHandler
     public ResponseEntity<ErrorResponse> handleException(Exception exc) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
+        ErrorResponse error = createErrorResponse(status, exc);
+        return new ResponseEntity<>(error, status);
+    }
+
+    private ErrorResponse createErrorResponse(HttpStatus status, Exception exc) {
         ErrorResponse error = new ErrorResponse(
                 status.value(),
                 exc.getMessage(),
                 System.currentTimeMillis());
-        return new ResponseEntity<>(error, status);
+        return error;
     }
 }
