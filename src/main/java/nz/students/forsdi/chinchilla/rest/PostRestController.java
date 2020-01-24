@@ -14,7 +14,7 @@ public class PostRestController {
     private PostService postService;
 
     @GetMapping("")
-    public List<Post> getUsers() {
+    public List<Post> getPosts() {
         return postService.getPosts();
     }
 

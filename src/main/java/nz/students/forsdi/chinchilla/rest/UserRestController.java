@@ -19,7 +19,7 @@ public class UserRestController {
     }
 
     @GetMapping("/{userId}")
-    public  User getUser(@PathVariable int userId) {
+    public User getUser(@PathVariable int userId) {
         return userService.getUser(userId);
     }
 
