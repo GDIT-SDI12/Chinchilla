@@ -17,6 +17,13 @@ public class ExceptionHandlerController {
         return new ResponseEntity<>(error, status);
     }
 
+    @ExceptionHandler
+    public ResponseEntity<ErrorResponse> handleException(NotAuthorizedException exc) {
+        HttpStatus status = HttpStatus.UNAUTHORIZED;
+        ErrorResponse error = createErrorResponse(status, exc);
+        return new ResponseEntity<>(error, status);
+    }
+
     // Another exception handler, to catch any exception (catch all)
     @ExceptionHandler
     public ResponseEntity<ErrorResponse> handleException(Exception exc) {
