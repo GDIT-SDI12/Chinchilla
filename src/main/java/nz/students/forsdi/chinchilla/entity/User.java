@@ -10,29 +10,17 @@ public class User {
     @Column(name = "id")
     private int id;
 
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH})
-    @JoinColumn(name = "role_id")
-    private Role role;
+    @Column(name = "username")
+    private String username;
 
-    @Column(name = "login")
-    private String login;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "details_id")
-    private UserDetails userDetails;
-
-    @Column(name = "active")
-    private boolean active;
+    @Column(name = "password")
+    private String password;
 
     public User() {
     }
 
-    public User(String login) {
-        this.login = login;
+    public User(String username) {
+        this.username = username;
     }
 
     public int getId() {
@@ -43,35 +31,19 @@ public class User {
         this.id = id;
     }
 
-    public Role getRole() {
-        return role;
+    public String getUsername() {
+        return username;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getLogin() {
-        return login;
+    public String getPassword() {
+        return password;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public UserDetails getUserDetails() {
-        return userDetails;
-    }
-
-    public void setUserDetails(UserDetails userDetails) {
-        this.userDetails = userDetails;
-    }
-
-    public boolean getActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
