@@ -18,7 +18,7 @@ public class ExceptionHandlerController {
     }
 
     @ExceptionHandler
-    public ResponseEntity<ErrorResponse> handleException(NotAuthorizedException exc) {
+    public ResponseEntity<ErrorResponse> handleException(UnauthorizedException exc) {
         HttpStatus status = HttpStatus.UNAUTHORIZED;
         ErrorResponse error = createErrorResponse(status, exc);
         return new ResponseEntity<>(error, status);
